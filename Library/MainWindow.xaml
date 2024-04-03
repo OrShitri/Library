@@ -1,0 +1,380 @@
+﻿<Window Name="Win1" x:Class="Library.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library"
+        mc:Ignorable="d"
+        Title="Library" Height="650" Width="1180" Closing="Win1_Closing" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+    <Canvas>
+        <Canvas.Background>
+            <ImageBrush ImageSource="Images\Welcome.jpg"/>
+        </Canvas.Background>
+
+        <!--#region Header And Footer-->
+        <TextBlock Name="tbkWelcomeToTheLibrary" Text="Welcome To The Library" Height="30" Width="1180" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" TextAlignment="Center" Foreground="Black">
+            <TextBlock.Background>
+                <SolidColorBrush  Color="#FF8E2F2F" Opacity="0.6"/>
+            </TextBlock.Background>
+        </TextBlock>
+
+        <TextBlock Text="© 2023 Libarary Inc. Created by Or_Shitrit" Height="25" Width="1180" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" FontWeight="Bold" FontSize="12" TextAlignment="Center" Foreground="Black" Canvas.Top="588">
+            <TextBlock.Background>
+                <SolidColorBrush  Color="#FF8E2F2F" Opacity="0.6"/>
+            </TextBlock.Background>
+        </TextBlock>
+        <!--#endregion-->
+
+        <!--#region StackPanel Of Login-->
+        <StackPanel Name="LoginStackPanel" Canvas.Left="489" Canvas.Top="252" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Visible">
+
+            <TextBox Name="tbUsername" Width="202" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="15" Foreground="White" Margin="0,0,0,5"  TextChanged="tbUsername_TextChanged">
+                <TextBox.Background>
+                    <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBlock Name="tbkUsername" Text="Username" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="3,-34,0,0"/>
+
+            <PasswordBox Name="pwbPassword" Width="202" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" MaxLength="8" Foreground="White" PasswordChanged="pwbPassword_PasswordChanged" >
+                <PasswordBox.Background>
+                    <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                </PasswordBox.Background>
+            </PasswordBox>
+            <TextBlock Name="tbkPassword" Text="Password" Width="50" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="3,-29,0,0"/>
+
+            <CheckBox Name="cbKeepMeLoggedIn" Content="Keep Me Logged In" Canvas.Left="622" Canvas.Top="285" Width="144" Foreground="#FFFF9E00" FontWeight="Bold" FontStyle="Italic" Margin="0,8,0,5"/>
+
+            <Button Name="btnLogin" Content="Login" Height="25" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="White" Margin="0,0,0,6" Click="btnLogin_Click"/>
+            <Button Name="btnSignUp" Content="SignUp"  Height="25" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="#FF003BFF" Margin="0,0,0,6" Click="btnSignUp_Click"/>
+            <Button Name="btnLoginAsGuest" Content="Login as Guest" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="White" Click="btnLoginAsGuest_Click"/>
+
+            <TextBlock Name="tbkStatusMessageLogin" Width="200" Height="80" HorizontalAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" Foreground="#FFF30505" FontSize="14" TextAlignment="Center" VerticalAlignment="Top">
+            <Run Name="tbkrStatusMessageLogin">
+                <Run.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.8"/>
+                </Run.Background>
+            </Run>
+            </TextBlock>
+
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region StackPanel Of SignUp-->
+        <StackPanel Name="SignUpStackPanel" Canvas.Left="489" Canvas.Top="217" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Collapsed">
+
+            <TextBox Name="tbNewUser" Width="202" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="15" Foreground="White" Margin="0,0,0,5" TextChanged="tbNewUser_TextChanged">
+                <TextBox.Background>
+                    <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBlock Name="tbkNewUser" Text="New User" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="3,-34,0,0"/>
+
+            <PasswordBox Name="pwbNewPassword" Width="202" Height="30" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20" MaxLength="8" Foreground="White" Margin="0,0,0,5" PasswordChanged="pwbNewPassword_PasswordChanged" >
+                <PasswordBox.Background>
+                    <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                </PasswordBox.Background>
+            </PasswordBox>
+            <TextBlock Name="tbkNewPassword" Text="New Password" Width="80" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="3,-34,0,0"/>
+
+            <PasswordBox Name="pwbConfirmPassword" Width="202" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" MaxLength="8" Foreground="White" PasswordChanged="pwbConfirmPassword_PasswordChanged">
+                <PasswordBox.Background>
+                    <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                </PasswordBox.Background>
+            </PasswordBox>
+            <TextBlock Name="tbkConfirmPassword" Text="Confirm Password" Width="100" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="3,-29,0,0"/>
+
+            <RadioButton GroupName="UserType" Name="rbtnUser" Content="User" Width="50" Height="15.1" Margin="-80,8.5,0,0" FontWeight="Bold" Foreground="#FFFF9E00" FontStyle="Italic" IsChecked="True"/>
+            <RadioButton GroupName="UserType" Name="rbtnLibrarian" Content="Librarian" Width="75" Height="15.1" Margin="65,-14,0,3.4" FontWeight="Bold" Foreground="#FFFF9E00" FontStyle="Italic"/>
+
+            <Button Name="btnAddUser" Content="Add User" Height="25" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="#FF5AFC5A"  Margin="0,0,0,6" Click="btnAddUser_Click"/>
+            <Button Name="btnBackToLogin" Content="Back To Login" Height="25" Width="120"  HorizontalAlignment="Center" FontWeight="Bold" Background="#FF5AFC5A" Click="btnBackToLogin_Click" Margin="0,0,0,6"/>
+
+            <TextBlock Name="tbkStatusMessageSignUp" Width="200" Height="80" HorizontalAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" Foreground="#FFF30505" FontSize="14" TextAlignment="Center" VerticalAlignment="Top">
+            <Run Name="tbkrStatusMessageSignUp">
+                <Run.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.8"/>
+                </Run.Background>
+            </Run>
+            </TextBlock>
+
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region StackPanel Of Menues-->
+        <StackPanel Name="MenuStackPanel" Canvas.Top="30" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Collapsed">
+
+            <!--#region StackPanel Of Author-->
+            <StackPanel Name="AuthorStackPanel" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Visible">
+                <StackPanel.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.8"/>
+                </StackPanel.Background>
+
+                <TextBlock Name="tbkManageBook" Text="Manage Books" Width="90" Height="17" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" FontWeight="Heavy" Foreground="White" Margin="0,5,0,2"/>
+                <Button Name="btnAddNewItem" Content="Add New Item" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="#FFFFC261" Margin="0,0,0,2" Click="btnAddNewItem_Click"/>
+                <Button Name="btnEditItem" Content="Edit Item" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="#FFFFC261" Margin="0,0,0,2" Click="btnEditItem_Click"/>
+                <Button Name="btnRemoveItem" Content="Remove Item" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="#FFFFC261" Margin="0,0,0,5" Click="btnRemoveItem_Click"/>
+
+                <TextBlock Text="Discount" Width="55" Height="17" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" FontWeight="Heavy" Foreground="White" Margin="0,0,0,2"/>
+                <Button Name="btnAddDiscount" Content="Add Discount" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="#FFFFC261" Click="btnAddDiscount_Click"/>
+                <TextBox Name="tbAddDiscount" Height="20" Width="150" TextWrapping="NoWrap" FontWeight="Bold" FontSize="12" MaxLength="3" Foreground="White" BorderThickness="0" Margin="0,0,0,2" TextChanged="tbAddDiscount_TextChanged" LostFocus="tbAddDiscount_LostFocus">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBlock Name="tbkAddDiscount" Text="Percentage Discount [%]" Width="140" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Bold" Foreground="White"  Margin="2,-22,0,0"/>
+                <Button Name="btnRemoveDiscount" Content="Remove Discount" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="#FFFFC261" Margin="0,0,0,0" Click="btnRemoveDiscount_Click"/>
+
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region StackPanel Of Users-->
+            <StackPanel Name="RentingItemsStackPanel" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Visible">
+                <StackPanel.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.8"/>
+                </StackPanel.Background>
+
+                <TextBlock Name="tbkRentingItems" Text="Renting Items" Width="90" Height="17" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" FontWeight="Heavy" Foreground="White" Margin="0,5,0,2"/>
+                <Button Name="btnMoveItemToRent" Content="Move Item To Rent List" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="#FFFFC261" Margin="0,0,0,2" Click="btnMoveItemToRent_Click"/>
+                <Button Name="btnMoveItemToLibrary" Content="Move Item To Library List" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="#FFFFC261" Margin="0,0,0,2" Click="btnMoveItemToLibrary_Click"/>
+                <Button Name="btnBackToLoginFromRenting" Content="Back To Login" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="#FFFFC261" Margin="0,0,0,5" Click="btnBackToLoginFromRenting_Click"/>
+
+            </StackPanel>
+            <!--#endregion-->
+
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region StackPanel Of Add Item-->
+        <StackPanel Name="AddItemStackPanel" Orientation="Vertical" Canvas.Top="125" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed" Canvas.Left="320">
+            <StackPanel.Background>
+                <SolidColorBrush Color="Black" Opacity="0.7"/>
+            </StackPanel.Background>
+
+            <TextBlock Name="tbkAddNewItem" Text="Add New Item" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Bold" Foreground="#FF0089FF" FontStyle="Normal" FontSize="22" Margin="0,0,0,20"/>
+
+            <RadioButton Name="rbtnBook" GroupName="ItemGroup" Content="Book" Canvas.Left="144" Canvas.Top="218" FontWeight="Bold" Foreground="#FFFF9E00" FontSize="12" HorizontalAlignment="Center" Margin="-130,0,0,15" Checked="rbtnBook_Checked"/>
+            <RadioButton Name="rbtnMagazine" GroupName="ItemGroup" Content="Magazine" Canvas.Left="144" Canvas.Top="218" FontWeight="Bold" Foreground="#FFFF9E00" FontSize="12" HorizontalAlignment="Center" Margin="100,-30,0,15" Checked="rbtnMagazine_Checked"/>
+
+            <TextBlock Name="tbkDetails" Text="Details" Width="100" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Bold" Foreground="#FFFF9E00" Margin="10,0,0,5" FontStyle="Normal"  FontSize="16"/>
+            <!--#region StackPanel Of Details-->
+            <StackPanel Name="DetailsItemStackPanel" Orientation="Horizontal" Canvas.Top="96" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible" Canvas.Left="236" Margin="10,0,10,0">
+
+                <TextBox Name="tbName" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="20" Foreground="White" Margin="0,0,5,0" TextChanged="tbName_TextChanged">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBlock Name="tbkName" Text="Name" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-102,0,0,0"/>
+
+                <TextBox Name="tbGenre" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="15" Foreground="White" Margin="0,0,5,0" TextChanged="tbGenre_TextChanged">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBlock Name="tbkGenre" Text="Genre" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-102,0,0,0"/>
+
+                <TextBox Name="tbAuthor" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="15" Foreground="White" Margin="0,0,5,0" TextChanged="tbAuthor_TextChanged">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBlock Name="tbkAuthor" Text="Author" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-102,0,0,0"/>
+
+                <TextBox Name="tbPublisher" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="15" Foreground="White" Margin="0,0,5,0" TextChanged="tbPublisher_TextChanged">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBlock Name="tbkPublisher" Text="Publisher" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-102,0,0,0"/>
+
+                <TextBox Name="tbPrice" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="4" Foreground="White" TextChanged="tbPrice_TextChanged">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBlock Name="tbkPrice" Text="Price" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-97,0,0,0"/>
+
+            </StackPanel>
+            <!--#endregion-->
+
+            <TextBlock Name="tbkPublishDate" Text="Publish Date" Width="100" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Bold" Foreground="#FFFF9E00" Margin="10,15,0,5" FontStyle="Normal" FontSize="16"/>
+            <!--#region StackPanel Of Publish Date-->
+            <StackPanel Name="PublishDateItemStackPanel" Orientation="Horizontal" Canvas.Top="20" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible" Canvas.Left="236" Margin="10,0,0,0">
+
+                <TextBox Name="tbDay" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="2" Foreground="White" Margin="0,0,5,0" TextChanged="tbDay_TextChanged">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBlock Name="tbkDay" Text="Day" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-102,0,0,0"/>
+
+                <TextBox Name="tbMonth" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="2" Foreground="White" Margin="0,0,5,0" TextChanged="tbMonth_TextChanged">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBlock Name="tbkMonth" Text="Month" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-102,0,0,0"/>
+
+                <TextBox Name="tbYear" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="4" Foreground="White" TextChanged="tbYear_TextChanged">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBlock Name="tbkYear" Text="Year" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-97,0,0,0"/>
+
+            </StackPanel>
+            <!--#endregion-->
+
+            <Button Name="btnClearFields" Content="Clear All Fields" Height="30" Width="120" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Background="#FFFFC261" Margin="0,-30,50,0" Click="btnClearFields_Click"/>
+
+            <TextBlock Name="tbkStatusMessageAddItem" Text="Status Message" Width="366" Height="82" HorizontalAlignment="Center" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Bold" Foreground="#FFF30505" Margin="0,20,0,0" FontSize="14" TextAlignment="Center"/>
+
+            <Button Name="btnAddItem" Content="Add Item" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="#FFFFC261" Margin="0,10,0,5" Click="btnAddItem_Click"/>
+            <Button Name="btnBackToLibrary" Content="Back To Library" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="#FFFFC261" Margin="0,0,0,5" Click="btnBackToLibrary_Click"/>
+
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region StackPanel Of ListView And Search-->
+        <StackPanel Name="ListViewStackPanel" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Collapsed" Canvas.Left="339" Canvas.Top="30">
+            <StackPanel.Background>
+                <SolidColorBrush Color="Black" Opacity="0.7"/>
+            </StackPanel.Background>
+
+            <!--#region StackPanel Of Search-->
+            <StackPanel Name="SearchStackPanel" Orientation="Vertical" Canvas.Top="30" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Visible" Canvas.Left="159">
+
+                <TextBlock Name="tbkSearchByDetails" Text="Search By" Width="100" Height="21" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Bold" Foreground="#FFFF9E00" Margin="10,0,0,5" FontStyle="Normal"  FontSize="16"/>
+                <!--#region StackPanel Of Search By Details-->
+                <StackPanel Name="DetailsOfSearchStackPanel" Orientation="Horizontal" Canvas.Top="96" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible" Canvas.Left="236" Margin="10,0,10,0">
+
+                    <TextBox Name="tbTypeSearch" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="10" Foreground="White" Margin="0,0,5,0" TextChanged="tbTypeSearch_TextChanged" >
+                        <TextBox.Background>
+                            <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBlock Name="tbkTypeSearch" Text="Type" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-102,0,0,0"/>
+
+                    <TextBox Name="tbNameSearch" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="20" Foreground="White" Margin="0,0,5,0" TextChanged="tbNameSearch_TextChanged" >
+                        <TextBox.Background>
+                            <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBlock Name="tbkNameSearch" Text="Name" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-102,0,0,0"/>
+
+                    <TextBox Name="tbGenreSearch" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="15" Foreground="White" Margin="0,0,5,0" TextChanged="tbGenreSearch_TextChanged" >
+                        <TextBox.Background>
+                            <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBlock Name="tbkGenreSearch" Text="Genre" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-102,0,0,0"/>
+
+                    <TextBox Name="tbAuthorSearch" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="15" Foreground="White" Margin="0,0,5,0" TextChanged="tbAuthorSearch_TextChanged">
+                        <TextBox.Background>
+                            <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBlock Name="tbkAuthorSearch" Text="Author" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-102,0,0,0"/>
+
+                    <TextBox Name="tbPublisherSearch" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="15" Foreground="White" Margin="0,0,5,0" TextChanged="tbPublisherSearch_TextChanged" >
+                        <TextBox.Background>
+                            <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBlock Name="tbkPublisherSearch" Text="Publisher" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-102,0,0,0"/>
+
+                    <TextBox Name="tbPriceSearch" Width="100" Height="30" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20" MaxLength="4" Foreground="White" TextChanged="tbPriceSearch_TextChanged" >
+                        <TextBox.Background>
+                            <SolidColorBrush Color="#FF8E2F2F" Opacity="0.6"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBlock Name="tbkPriceSearch" Text="Price" Width="57" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Normal" Foreground="White" Margin="-97,0,0,0"/>
+
+                    <Button Name="btnClearFieldsSearch" Content="Claer" Height="30" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Background="#FFFFC261" Margin="5,0,0,0" Click="btnClearFieldsSearch_Click"/>
+
+                </StackPanel>
+                <!--#endregion-->
+
+                <TextBlock Name="tbkTotalResults" Text="" Width="100" Height="19" HorizontalAlignment="Right" VerticalAlignment="Top" TextWrapping="NoWrap" IsHitTestVisible="False" FontWeight="Bold" Foreground="#FFFF9E00" Margin="0,-56,0,0" FontStyle="Normal"  FontSize="16" Visibility="Collapsed"/>
+
+            </StackPanel>
+            <!--#endregion-->
+
+            <TextBlock Name="tbkLibraryList" Text="Library List" Width="120" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" FontWeight="Heavy" Foreground="White" FontSize="20"  />
+            <!--#region ListView Of Library-->
+            <ListView Name="ListViewLibrary" ItemsSource="{Binding LibraryListOfListViewData}" Height="233" Width="826" d:ItemsSource="{d:SampleData ItemCount=0}" Canvas.Left="155" Canvas.Top="30" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontWeight="Bold" Visibility="Visible" Margin="0,0,0,16" PreviewMouseLeftButtonDown="ListViewLibrary_PreviewMouseLeftButtonDown">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View >
+                    <GridView  AllowsColumnReorder="False" >
+                        <GridViewColumn  DisplayMemberBinding="{Binding ID}" Header="ID" Width="30" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding ItemType}" Header="Type" Width="70" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding Name}" Header="Name" Width="100" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding Genre}" Header="Genre" Width="90" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding Author}" Header="Author" Width="90" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding Publisher}" Header="Publisher" Width="90" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding CurrentPrice,StringFormat={}{0:c}}" Header="Current Price" Width="85" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding RegularPrice,StringFormat={}{0:c}}" Header="Regular Price" Width="85" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding DiscountPrice,StringFormat={}{0:#0.00'%'}}" Header="Discount Price" Width="85" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding PublishDate,StringFormat='dd/MM/yyyy'}" Header="Publish Date" Width="90" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <!--#endregion-->
+
+            <TextBlock Name="tbkRentList" Text="Rent List" Width="90" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" FontWeight="Heavy" Foreground="White" FontSize="20"  Margin="0,-16,0,0"/>
+            <!--#region ListView Of Rent-->
+            <ListView Name="ListViewRent" ItemsSource="{Binding RentListOfListViewData}" Height="192" Width="826" d:ItemsSource="{d:SampleData ItemCount=0}" Canvas.Left="131" Canvas.Top="334" HorizontalAlignment="Left" HorizontalContentAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontWeight="Bold" Visibility="Visible" Margin="0,0,0,17" PreviewMouseLeftButtonDown="ListViewRent_PreviewMouseLeftButtonDown" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View >
+                    <GridView  AllowsColumnReorder="False" >
+                        <GridViewColumn  DisplayMemberBinding="{Binding ID}" Header="ID" Width="30" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding ItemType}" Header="Type" Width="70" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding Name}" Header="Name" Width="100" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding Genre}" Header="Genre" Width="90" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding Publisher}" Header="Publisher" Width="90" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding Renter}" Header="Renter" Width="115" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding CurrentPrice,StringFormat={}{0:c}}" Header="Price" Width="60" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding RentDate,StringFormat='dd/MM/yyyy'}" Header="Rent Date" Width="85" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding ReturnDate,StringFormat='dd/MM/yyyy'}" Header="Return Date" Width="85" />
+                        <GridViewColumn  DisplayMemberBinding="{Binding LateOnReturn}" Header="Late On Return" Width="90" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <!--#endregion-->
+
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region StackPanel Of Amounts Of Items In Library-->
+        <StackPanel Name="LibraryDetailsQuantityStackPanel" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Collapsed" Canvas.Top="488">
+            <StackPanel.Background>
+                <SolidColorBrush Color="Black" Opacity="0.7"/>
+            </StackPanel.Background>
+
+            <TextBlock Name="tbkTotalItems" Text="" Width="190" Height="15" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" FontWeight="Heavy" Foreground="White" FontSize="12" Margin="5"/>
+            <TextBlock Name="tbkTotalItemsOfEachTypeBook" Text="" Width="166" Height="15" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" FontWeight="Heavy" Foreground="White" FontSize="12" Margin="5"/>
+            <TextBlock Name="tbkItemAvailable" Text="" Width="150" Height="15" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" FontWeight="Heavy" Foreground="White" FontSize="12" Margin="5"/>
+            <TextBlock Name="tbkItemRent" Text="" Width="115" Height="15" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" FontWeight="Heavy" Foreground="White" FontSize="12" Margin="5"/>
+
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region StackPanel Of Logged In Username And Total Cash-->
+        <StackPanel Name="TotalCashInLibraryStackPanel" Orientation="Horizontal" Canvas.Top="8" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed" Canvas.Left="10">
+
+            <TextBlock Name="tbkLoggedInUsername" Text="" Width="260" Height="16" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" FontWeight="Heavy" Foreground="Beige" FontSize="12"/>
+            <TextBlock Name="tbkTotalCash" Text="" Width="215" Height="15" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="NoWrap" FontWeight="Heavy" Foreground="Beige" FontSize="12" Margin="670,0,0,0"/>
+
+        </StackPanel>
+        <!--#endregion-->
+        
+    </Canvas>
+</Window>
