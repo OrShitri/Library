@@ -24,10 +24,12 @@ In addition, without registration it is possible to log in as a guest and only v
 All data is saved and loaded automatically when closing/opening the application, on Jason files.
 <br>
 On the first run of the application, default JSON files are created, in which the administrator's username and password are also saved. 
+<br>
 Username - AdminUser@1991
+<br>
 Password - 123456
+<br>
 
->נ
 ### Dependencies
 * .Net Core
 
