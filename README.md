@@ -1,4 +1,4 @@
-<img align="center" alt="backgroundWarehouse" width="700px" style="padding-right:10px;" src="https://github.com/OrShitri/Library/blob/master/Library/Images/Welcome.jpg?raw=true" />  
+<img align="center" alt="backgroundWarehouse" style="padding-right:10px;" src="https://github.com/OrShitri/Library/blob/master/Library/Images/Welcome.jpg?raw=true" />  
 
 # Library
 The library system is a digital library store that simulates a public library.
